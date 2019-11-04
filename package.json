@@ -70,7 +70,8 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-watch": "6.0.1",
     "supertest": "4.0.2",
-    "supertest-as-promised": "4.0.2"
+    "supertest-as-promised": "4.0.2",
+    "husky":"3.0.9"
   },
   "license": "MIT",
   "config": {
