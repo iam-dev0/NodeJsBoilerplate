@@ -4,7 +4,7 @@ const APIError = require('../helpers/APIError');
 import config from '../../config/config';
 
 // sample user, used for authentication
-const user = {
+const user = { 
   username: 'react',
   password: 'express'
 };

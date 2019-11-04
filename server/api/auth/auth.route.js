@@ -1,19 +1,22 @@
-const express = require('express');
-const validate = require('express-validation');
-const expressJwt = require('express-jwt');
-const paramValidation = require('../param-validation');
-const authCtrl = require('./auth.controller');
-import config from '../../config/config';
+import express from 'express';
+import validate from 'express-validation';
+import expressJwt from 'express-jwt';
+import paramValidation from '../../globalvalidation/param-validation';
+import authCtrl from './auth.controller';
+import config from '../../../config/config';
 
-const router = express.Router(); // eslint-disable-line new-cap
+// eslint-disable-next-line no-trailing-spaces
+const router = express.Router();
 
 /** POST /api/auth/login - Returns token if correct username and password is provided */
-router.route('/login')
-  .post(validate(paramValidation.login), authCtrl.login);
+router.post('/login', validate(paramValidation.login), authCtrl.login);
 
 /** GET /api/auth/random-number - Protected route,
  * needs token returned by the above as header. Authorization: Bearer {token} */
-router.route('/random-number')
-  .get(expressJwt({ secret: config.jwtSecret }), authCtrl.getRandomNumber);
+router.get(
+  '/random-number',
+  expressJwt({ secret: config.jwtSecret }),
+  authCtrl.getRandomNumber
+);
 
-module.exports = router;
+export default router;
