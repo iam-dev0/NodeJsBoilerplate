@@ -1,6 +1,6 @@
-const winston = require('winston');
+import winston from 'winston';
 
-const logger = new (winston.Logger)({
+const logger = new (winston.createLogger)({
   transports: [
     new (winston.transports.Console)({
       json: true,

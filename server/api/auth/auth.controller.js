@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
-const config = require('../../config/config');
+import config from '../../config/config';
 
 // sample user, used for authentication
 const user = {

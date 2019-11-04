@@ -1,6 +1,7 @@
+import config from '../config/config';
+
 const express = require('express');
 const logger = require('morgan');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const compress = require('compression');
 const methodOverride = require('method-override');
@@ -9,10 +10,11 @@ const httpStatus = require('http-status');
 const expressWinston = require('express-winston');
 const expressValidation = require('express-validation');
 const helmet = require('helmet');
-const winstonInstance = require('./winston');
-const routes = require('../index.route');
-const config = require('./config');
-const APIError = require('../server/helpers/APIError');
+const winstonInstance = require('../config/winston');
+const routes = require('./index.route');
+
+
+const APIError = require('./helpers/APIError');
 
 const app = express();
 
@@ -20,10 +22,7 @@ if (config.env === 'development') {
   app.use(logger('dev'));
 }
 
-// parse body params and attache them to req.body
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json());
 app.use(cookieParser());
 app.use(compress());
 app.use(methodOverride());
@@ -56,7 +55,7 @@ app.use((err, req, res, next) => {
     const unifiedErrorMessage = err.errors.map(error => error.messages.join('. ')).join(' and ');
     const error = new APIError(unifiedErrorMessage, err.status, true);
     return next(error);
-  } else if (!(err instanceof APIError)) {
+  } elseif (!(err instanceof APIError)){
     const apiError = new APIError(err.message, err.status, err.isPublic);
     return next(apiError);
   }

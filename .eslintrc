@@ -1,5 +1,7 @@
 {
   "rules": {
+    // "plugins": ["jest"],
+    "linebreak-style": 0,
     "indent": [
       2,
       2,
@@ -7,6 +9,7 @@
         "SwitchCase": 1
       }
     ],
+    "semi": "error",
     "space-before-function-paren": [
       2,
       {
@@ -30,13 +33,12 @@
     ],
     "no-underscore-dangle": [
       0
-    ],
-    "jest/no-focused-tests": 2,
-    "jest/no-identical-title": 2
+    ]
+    // "jest/no-focused-tests": 2,
+    // "jest/no-identical-title": 2
   },
   "env": {
-    "node": true,
-    "mocha": true
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
