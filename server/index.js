@@ -1,12 +1,12 @@
 // config should be imported before importing any other file
 import config from '../config/config';
 
-const mongoose = require('mongoose');
-const util = require('util');
+// const mongoose = require('mongoose');
+// const util = require('util');
 
 const app = require('./express');
 
-const debug = require('debug')('Zidoary:index');
+// const debug = require('debug')('Zidoary:index');
 
 // make bluebird default Promise
 // eslint-disable-line no-global-assign
