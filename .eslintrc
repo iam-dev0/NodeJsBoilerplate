@@ -1,6 +1,5 @@
 {
   "rules": {
-    // "plugins": ["jest"],
     "linebreak-style": 0,
     "indent": [
       2,
@@ -38,7 +37,8 @@
     // "jest/no-identical-title": 2
   },
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 6,

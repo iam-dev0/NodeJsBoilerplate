@@ -6,7 +6,7 @@
   "main": "index.js",
   "private": false,
   "engines": {
-    "node": ">=12.13.0",
+    "node": ">=10.15.0",
     "npm": ">=6.6.0",
     "yarn": ">=1.17.3"
   },
@@ -17,14 +17,12 @@
     "lint": "esw ./server/*.js server config --color",
     "lint:watch": "yarn lint -- --watch",
     "commit": "npx git-cz",
-    "precommit": "npm run lint && npm run test",
-    "test": "",
-    "test:watch": "",
-    "test:coverage": "cross-env NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha -- --ui bdd --reporter spec --colors server --recursive",
-    "test:check-coverage": "yarn test:coverage && istanbul check-coverage",
-    "report-coverage": "coveralls < ./coverage/lcov.info",
-    "clean": "rimraf dist -p",
-    "build": "yarn run clean && mkdir -p dist && babel server -s -D -d dist/server && babel config -s -D -d dist/config"
+    "precommit": "npm run lint && npm run test --colors",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest -- --watch",
+    "test:coverage": "yarn test --coverage --watchAll=false",
+    "clean": "rimraf dist",
+    "build": "yarn run clean && mkdir dist && babel server -s -D -d dist/server --ignore server/**/*.test.js && babel config -s -D -d dist/config --ignore **/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -35,13 +33,14 @@
     "boilerplate"
   ],
   "dependencies": {
+    "@hapi/joi": "^16.1.7",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "compression": "1.7.4",
     "cookie-parser": "1.4.4",
-    "cors": "2.8.5",
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "4.17.1",
@@ -50,7 +49,6 @@
     "express-winston": "4.0.1",
     "helmet": "3.21.1",
     "http-status": "1.4.0",
-    "joi": "14.3.1",
     "jsonwebtoken": "8.5.1",
     "method-override": "^3.0.0",
     "mongoose": "5.7.5",
@@ -65,16 +63,25 @@
     "coveralls": "^3.0.7",
     "cross-env": "6.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "eslint": "6.5.1",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jest": "^23.0.2",
     "eslint-watch": "6.0.1",
-    "husky": "3.0.9"
+    "husky": "3.0.9",
+    "jest": "^24.9.0"
   },
   "license": "MIT",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "server/**/*.js",
+      "server/*.js",
+      "config/*.js"
+    ]
   }
 }
