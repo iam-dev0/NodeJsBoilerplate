@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
-const util = require("util");
-
 // config should be imported before importing any other file
-import config from "../config/config";
-const app = require("./express");
+import config from '../config/config';
 
-const debug = require("debug")("Zidoary:index");
+const mongoose = require('mongoose');
+const util = require('util');
+
+const app = require('./express');
+
+const debug = require('debug')('Zidoary:index');
 
 // make bluebird default Promise
 // eslint-disable-line no-global-assign
@@ -28,14 +29,9 @@ const debug = require("debug")("Zidoary:index");
 //   });
 // }
 
-// module.parent check is required to support mocha watch
-// src: https://github.com/mochajs/mocha/issues/1912
-if (!module.parent) {
-  // listen on port config.port
-  app.listen(config.port, error => {
-    if (error) console.log("Error on server: ", err);
-    else console.info(`server started on port ${config.port} (${config.env})`); // eslint-disable-line no-console
-  });
-}
-
-module.exports = app;
+// listen on port config.port
+app.listen(config.port, (error) => {
+  // eslint-disable-next-line no-console
+  if (error) console.log('Error on server: ', error);
+  else console.info(`server started on port ${config.port} (${config.env})`); // eslint-disable-line no-console
+});

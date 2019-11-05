@@ -1,10 +1,12 @@
+import config from '../../../config/config';
+
 const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
-const APIError = require('../helpers/APIError');
-import config from '../../config/config';
+const APIError = require('../../globalvalidation/param-validation');
+
 
 // sample user, used for authentication
-const user = { 
+const user = {
   username: 'react',
   password: 'express'
 };
