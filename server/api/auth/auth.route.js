@@ -19,4 +19,4 @@ router.get(
   authCtrl.getRandomNumber
 );
 
-export default router;
+module.exports = router;
