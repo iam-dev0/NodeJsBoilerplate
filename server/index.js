@@ -1,10 +1,9 @@
 // config should be imported before importing any other file
 import config from '../config/config';
+import app from './express';
 
 // const mongoose = require('mongoose');
 // const util = require('util');
-
-const app = require('./express');
 
 // const debug = require('debug')('Zidoary:index');
 

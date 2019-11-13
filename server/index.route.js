@@ -1,6 +1,6 @@
-const express = require('express');
-const userRoutes = require('./api/user/user.route');
-const authRoutes = require('./api/auth/auth.route');
+import express from 'express';
+import userRoutes from './api/user/user.route';
+import authRoutes from './api/auth/auth.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 

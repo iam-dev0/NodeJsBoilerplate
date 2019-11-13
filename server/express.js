@@ -1,19 +1,18 @@
+import helmet from 'helmet';
+import express from 'express';
+import expressValidation from 'express-validation';
+import expressWinston from 'express-winston';
+import httpStatus from 'http-status';
+import cors from 'cors';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import compress from 'compression';
+import methodOverride from 'method-override';
+
 import config from '../config/config';
-
-const express = require('express');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const compress = require('compression');
-const methodOverride = require('method-override');
-const cors = require('cors');
-const httpStatus = require('http-status');
-const expressWinston = require('express-winston');
-const expressValidation = require('express-validation');
-const helmet = require('helmet');
-const winstonInstance = require('../config/winston');
-const routes = require('./index.route');
-
-const APIError = require('./helpers/APIError');
+import winstonInstance from '../config/winston';
+import routes from './index.route';
+import APIError from './helpers/APIError';
 
 const app = express();
 
@@ -93,4 +92,4 @@ app.use((
   stack: config.env === 'development' ? err.stack : {}
 }));
 
-module.exports = app;
+export default app;

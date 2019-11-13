@@ -5,7 +5,7 @@ const httpStatus = require('http-status');
  * Class representing an API error.
  * @extends ExtendableError
  */
-class APIError extends ExtendableError {
+export default class APIError extends ExtendableError {
   /**
    * Creates an API error.
    * @param {string} message - Error message.
@@ -20,5 +20,3 @@ class APIError extends ExtendableError {
     super(message, status, isPublic);
   }
 }
-
-module.exports = APIError;

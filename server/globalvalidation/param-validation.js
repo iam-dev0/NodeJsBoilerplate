@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-module.exports = {
+const Validations = {
   // POST /api/users
   createUser: {
     body: {
@@ -34,3 +34,5 @@ module.exports = {
     }
   }
 };
+
+export default Validations;
