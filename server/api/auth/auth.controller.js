@@ -49,4 +49,4 @@ function getRandomNumber(req, res) {
   });
 }
 
-module.exports = { login, getRandomNumber };
+export default { login, getRandomNumber };

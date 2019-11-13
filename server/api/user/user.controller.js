@@ -1,4 +1,4 @@
-const User = require('./user.model');
+import User from './user.model';
 
 /**
  * Load user and append to req.
@@ -80,7 +80,7 @@ function remove(req, res, next) {
     .catch((e) => next(e));
 }
 
-module.exports = {
+export default {
   load,
   get,
   create,

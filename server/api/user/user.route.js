@@ -1,18 +1,20 @@
-const express = require('express');
-const validate = require('express-validation');
-const paramValidation = require('../../globalvalidation/param-validation');
-const userCtrl = require('./user.controller');
+import express from 'express';
+import validate from 'express-validation';
+import paramValidation from '../../globalvalidation/param-validation';
+import userCtrl from './user.controller';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
-router.route('/')
+router
+  .route('/')
   /** GET /api/users - Get list of users */
   .get(userCtrl.list)
 
   /** POST /api/users - Create new user */
   .post(validate(paramValidation.createUser), userCtrl.create);
 
-router.route('/:userId')
+router
+  .route('/:userId')
   /** GET /api/users/:userId - Get user */
   .get(userCtrl.get)
 
@@ -25,4 +27,4 @@ router.route('/:userId')
 /** Load user when API with userId route parameter is hit */
 router.param('userId', userCtrl.load);
 
-module.exports = router;
+export default router;
